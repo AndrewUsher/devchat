@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "react",
+    "standard"
+  ],
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ]
+  }
+}
