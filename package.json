@@ -5,6 +5,9 @@
   "main": "server.js",
   "repository": "https://github.com/AndrewUsher/devchat",
   "author": "Andrew Usher <andrewusher00@gmail.com>",
+  "scripts": {
+    "server": "nodemon server.js"
+  },
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
