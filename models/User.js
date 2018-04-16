@@ -1,3 +1,4 @@
+/* eslint no-undef: 0 */
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
@@ -15,8 +16,7 @@ const UserSchema = new Schema({
     required: true
   },
   avatar: {
-    type: String,
-    required: true
+    type: String
   },
   date: {
     type: Date,
