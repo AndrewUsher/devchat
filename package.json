@@ -1,0 +1,22 @@
+{
+  "name": "devchat",
+  "version": "1.0.0",
+  "description": "Developer social network",
+  "main": "server.js",
+  "repository": "https://github.com/AndrewUsher/devchat",
+  "author": "Andrew Usher <andrewusher00@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.1",
+    "mongoose": "^5.0.14",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^9.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  }
+}
