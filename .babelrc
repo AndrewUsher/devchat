@@ -1,6 +1,13 @@
 {
-  "extends": [
-    "@babel/preset-react",
-    "@babel/preset-env"
+  "presets": [
+    "react",
+    [
+      "env",
+      {
+        "targets": "last 3 versions",
+        "loose": true,
+        "modules": false
+      }
+    ]
   ]
 }

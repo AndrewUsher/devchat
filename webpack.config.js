@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const prod = process.env.NODE_ENV === 'production'
 
 module.exports = {
@@ -15,7 +16,7 @@ module.exports = {
     contentBase: './docs',
     compress: true,
     hot: true,
-    port: 3000,
+    port: 8000,
     stats: 'errors-only'
   },
   module: {
@@ -38,7 +39,10 @@ module.exports = {
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new BundleAnalyzerPlugin()
+    new BundleAnalyzerPlugin(),
+    new HtmlWebpackPlugin({
+      template: './public/index.html'
+    })
   ],
   optimization: {
     minimizer: [
