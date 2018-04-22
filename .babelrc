@@ -1,0 +1,6 @@
+{
+  "extends": [
+    "@babel/preset-react",
+    "@babel/preset-env"
+  ]
+}
