@@ -6,6 +6,8 @@
   "repository": "https://github.com/AndrewUsher/devchat",
   "author": "Andrew Usher <andrewusher00@gmail.com>",
   "scripts": {
+    "client": "webpack-dev-server --open --mode development",
+    "dev": "concurrently \"yarn server\" \"yarn client\"",
     "server": "nodemon server.js"
   },
   "license": "MIT",
@@ -22,6 +24,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
+    "concurrently": "^3.5.1",
     "eslint": "^4.19.1",
     "eslint-config-react": "^1.1.7",
     "eslint-config-standard": "^11.0.0",
@@ -31,5 +34,6 @@
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-standard": "^3.0.1",
     "nodemon": "^1.17.3"
-  }
+  },
+  "proxy": "http://localhost:3000"
 }
