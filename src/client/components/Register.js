@@ -73,7 +73,7 @@ class Register extends Component {
                 onChange={this.formChange}
               />
               {errors.email && (
-                <div className="invalid-feedback">{errors.email}</div>
+                <div className="form-invalid">{errors.email}</div>
               )}
               <small>
                 This site uses Gravatar so if you want a profile image, use
@@ -89,7 +89,7 @@ class Register extends Component {
                 onChange={this.formChange}
               />
               {errors.password && (
-                <div className="invalid-feedback">{errors.password}</div>
+                <div className="form-invalid">{errors.password}</div>
               )}
             </div>
             <div className="form-group">
@@ -101,7 +101,7 @@ class Register extends Component {
                 onChange={this.formChange}
               />
               {errors.password2 && (
-                <div className="invalid-feedback">{errors.password2}</div>
+                <div className="form-invalid">{errors.password2}</div>
               )}
             </div>
             <input type="submit" value="Register" />
