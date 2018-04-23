@@ -5,7 +5,8 @@ class Login extends Component {
     super(props)
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      errors: {}
     }
 
     this.formChange = this.formChange.bind(this)
@@ -31,18 +32,25 @@ class Login extends Component {
     console.log(user)
   }
   render () {
+    const { errors } = this.state
     return (
       <div className="login">
         <div className="container">
           <p>Sign in to Devchat</p>
-          <form onSubmit={this.formSubmit} >
+          <form onSubmit={this.formSubmit}>
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <input type="email" name="email" id="email" onChange={this.formChange} />
+              {errors.email && (
+                <div className="form-invalid">{errors.email}</div>
+              )}
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <input type="password" name="password" id="password" onChange={this.formChange} />
+              {errors.password && (
+                <div className="form-invalid">{errors.password}</div>
+              )}
             </div>
             <input type="submit" value="Login" />
           </form>
