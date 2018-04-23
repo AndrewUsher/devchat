@@ -15,6 +15,7 @@
     "max-nested-callbacks": [
       "error",
       5
-    ]
+    ],
+    "prefer-reflect": "off"
   }
 }

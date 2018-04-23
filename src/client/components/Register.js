@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { registerUser } from '../actions/auth'
 
 class Register extends Component {
   constructor (props) {
@@ -16,6 +19,27 @@ class Register extends Component {
     this.formSubmit = this.formSubmit.bind(this)
   }
 
+  componentDidMount () {
+    const { isAuthed } = this.props.auth
+
+    if (isAuthed) {
+      this.props.history.push('/dashboard')
+    }
+  }
+
+  componentWillReceiveProps (nextProps) {
+    const { isAuthed } = nextProps.auth
+    const { errors } = nextProps
+
+    if (isAuthed) {
+      this.props.history.push('/dashboard')
+    }
+
+    if (errors) {
+      this.setState({ errors })
+    }
+  }
+
   formChange (event) {
     const { name, value } = event.target
     this.setState({
@@ -26,6 +50,7 @@ class Register extends Component {
   formSubmit (event) {
     event.preventDefault()
 
+    const { history } = this.props
     const { name, email, password, password2 } = this.state
     const user = {
       name,
@@ -34,10 +59,7 @@ class Register extends Component {
       password2
     }
 
-    axios
-      .post('http://localhost:3000/api/users/register', user, { mode: 'no-cors' })
-      .then(res => console.log(res.data))
-      .catch(error => this.setState({ errors: error.response.data }))
+    this.props.registerUser(user, history)
   }
 
   render () {
@@ -112,4 +134,15 @@ class Register extends Component {
   }
 }
 
-export default Register
+Register.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+})
+
+export default connect(mapStateToProps, { registerUser })(withRouter(Register))
