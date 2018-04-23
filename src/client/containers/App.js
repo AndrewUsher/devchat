@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import store from '../store/index'
 
 // import components
 import Header from '../components/Header'
@@ -12,16 +14,18 @@ import Footer from '../components/Footer'
 class App extends Component {
   render () {
     return (
-      <Router>
-        <div>
-          <Header auth={false} />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/developers" component={Developers} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
-          <Footer />
-        </div>
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <div>
+            <Header auth={false} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/developers" component={Developers} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
+            <Footer />
+          </div>
+        </Router>
+      </Provider>
     )
   }
 }
