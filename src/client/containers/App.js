@@ -15,10 +15,10 @@ class App extends Component {
       <Router>
         <div>
           <Header auth={false} />
-          <Route path="/" component={Home} />
-          <Route path="/developers" component={Developers} />
-          <Route path="/login" component={Login} />
-          <Router path="register" component={Register} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/developers" component={Developers} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
           <Footer />
         </div>
       </Router>

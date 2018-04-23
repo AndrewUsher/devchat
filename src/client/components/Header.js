@@ -27,7 +27,7 @@ const Header = ({ auth }) => {
             <Link to="/developers">Developers</Link>
           </li>
           <li>
-            <Link to="/signup">Sign Up</Link>
+            <Link to="/register">Register</Link>
           </li>
           <li>
             <Link to="/login">Login</Link>
