@@ -51,7 +51,7 @@ class Register extends Component {
           <p>
             Create a new account
           </p>
-          <form noValidate onSubmit={this.formSubmit}>
+          <form onSubmit={this.formSubmit}>
             <div className="form-group">
               <input
                 type="text"
