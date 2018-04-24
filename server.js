@@ -3,13 +3,13 @@ const path = require('path')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const passport = require('passport')
-const port = process.env.PORT || 3000
 const app = express()
 
 const users = require('./src/routes/api/users')
 const profile = require('./src/routes/api/profile')
 const posts = require('./src/routes/api/posts')
 const db = require('./src/config/keys').mongoURI
+const port = 3000 || process.env.PORT
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
