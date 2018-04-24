@@ -1,12 +1,14 @@
 const express = require('express')
+const path = require('path')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const passport = require('passport')
+const port = process.env.PORT || 3000
+const app = express()
+
 const users = require('./src/routes/api/users')
 const profile = require('./src/routes/api/profile')
 const posts = require('./src/routes/api/posts')
-const port = process.env.PORT || 3000
-const app = express()
 const db = require('./src/config/keys').mongoURI
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -17,6 +19,12 @@ mongoose
   .catch(error => console.log(error))
 
 app.use(passport.initialize())
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+  next()
+})
 
 require('./src/config/passport')(passport)
 app.use('/api/users', users)
