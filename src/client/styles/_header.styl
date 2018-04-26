@@ -1,0 +1,45 @@
+@import 'variables.styl'
+
+header 
+  display: flex;
+  font-family: $siteFont;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 40px;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1700px;
+  left: 0;
+  right: 0;
+  position: fixed;
+  z-index: 4;
+
+  @media (max-width: $smallDevice)
+    padding: 10px;
+
+  h1 
+    color: #f4f4f4;
+    font-size: 36px;
+    font-weight: normal;
+    
+    @media (max-width: $smallDevice)
+      font-size: 30px;
+
+  nav 
+    display: flex;
+    list-style: none;
+
+    li 
+      margin-right: 25px;
+
+      &:last-child 
+        margin-right: 0;
+
+    a 
+      color: #fefefe;
+      font-size: 20px;
+      text-decoration: none;
+
+      @media (max-width: $smallDevice)
+        font-size: 16px;
+        
