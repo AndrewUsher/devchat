@@ -9,14 +9,22 @@ module.exports = {
   entry: './src/client/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'docs')
+    path: path.resolve(__dirname, 'docs'),
+    publicPath: '/'
   },
   devtool: prod ? 'source-map' : 'inline-source-map',
   devServer: {
     contentBase: './docs',
     compress: true,
-    hot: true,
+    historyApiFallback: true,
     port: 8000,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        secure: false,
+        changeOrigin: true
+      }
+    },
     stats: 'errors-only'
   },
   module: {
@@ -33,6 +41,18 @@ module.exports = {
       {
         test: /\.css$/,
         use: 'css-loader'
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true
+            }
+          }
+        ]
       }
     ]
   },
