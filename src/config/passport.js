@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const User = mongoose.model('users')
 const secret = require('./keys').jwtSecret
 
-const options = {}
+let options = {}
 options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken()
 options.secretOrKey = secret
 
