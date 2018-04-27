@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import TextFieldGroup from './TextFieldGroup'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { loginUser } from '../actions/auth'
+import '../styles/_onboarding.styl'
 
 class Login extends Component {
   constructor (props) {
@@ -58,25 +60,27 @@ class Login extends Component {
   render () {
     const { errors, email, password } = this.state
     return (
-      <div className="login">
-        <div className="container">
-          <p>Sign in to Devchat</p>
+      <div className="onboarding">
+        <div className="onboarding-info">
+          <h2>Sign In</h2>
           <form onSubmit={this.formSubmit}>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input type="email" name="email" id="email" value={email} onChange={this.formChange} />
-              {errors.email && (
-                <div className="form-invalid">{errors.email}</div>
-              )}
-            </div>
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input type="password" name="password" id="password" value={password} onChange={this.formChange} />
-              {errors.password && (
-                <div className="form-invalid">{errors.password}</div>
-              )}
-            </div>
-            <input type="submit" value="Login" />
+            <TextFieldGroup
+              placeholder="Email"
+              name="email"
+              type="email"
+              value={email}
+              onChange={this.formChange}
+              error={errors.email}
+            />
+            <TextFieldGroup
+              placeholder="Password"
+              name="password"
+              type="password"
+              value={password}
+              onChange={this.formChange}
+              error={errors.password}
+            />
+            <button type="submit">Sign In</button>
           </form>
         </div>
       </div>
