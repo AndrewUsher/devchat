@@ -19,7 +19,7 @@ export const logoutUser = () => dispatch => {
 
 export const registerUser = (user, history) => dispatch => {
   axios
-    .post('api/users/register', user)
+    .post('http://localhost:3000/api/users/register', user)
     .then(() => history.push('/login'))
     .catch(error =>
       dispatch({
@@ -31,7 +31,7 @@ export const registerUser = (user, history) => dispatch => {
 
 export const loginUser = user => dispatch => {
   axios
-    .post('api/users/login', user)
+    .post('http://localhost:3000/api/users/login', user)
     .then(res => {
       const { token } = res.data
       localStorage.setItem('token', token)
