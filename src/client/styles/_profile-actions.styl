@@ -1,0 +1,26 @@
+@import 'variables.styl'
+
+.profile-actions 
+  margin-bottom: 50px;
+
+  a 
+    background-color: $secondaryColor;
+    border-radius: 2%;
+    color: #eee;
+    display: inline-block;
+    margin-right: 25px;
+    padding: 10px 15px;
+    text-decoration: none;
+    transition: background-color 200ms,
+                transform 400ms;
+
+    &:hover 
+      background-color: darken($secondaryColor, 20%);
+      transform: scale(1.1);
+
+    
+    @media (max-width: $smallDevice) 
+      display: block;
+      font-size: 20px;
+      margin-bottom: 25px;
+      padding: 15px 15px;
