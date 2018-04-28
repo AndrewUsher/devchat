@@ -7,9 +7,8 @@ module.exports = function validateProfileInput (data) {
     min: 2,
     max: 40
   }
-  let { handle, status, skills, website, youtube, linkedin, facebook, instagram, twitter } = data
+  let { handle, skills, website, youtube, linkedin, facebook, instagram, twitter } = data
   handle = !isEmpty(handle) ? handle : ''
-  status = !isEmpty(status) ? status : ''
   skills = !isEmpty(skills) ? skills : ''
 
   if (!Validator.isLength(handle, handleLength)) {
@@ -22,10 +21,6 @@ module.exports = function validateProfileInput (data) {
 
   if (Validator.isEmpty(skills)) {
     errors.handle = 'Skills fieldis required'
-  }
-
-  if (Validator.isEmpty(status)) {
-    errors.handle = 'Status field is required'
   }
 
   if (!isEmpty(website)) {

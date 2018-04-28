@@ -18,10 +18,6 @@ const ProfileSchema = new Schema({
   website: {
     type: String
   },
-  status: {
-    type: String,
-    required: true
-  },
   skills: {
     type: [String]
   },
