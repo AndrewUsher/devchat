@@ -1,0 +1,105 @@
+@import 'variables.styl'
+
+
+.modify-profile
+  background: url('../assets/banner.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $siteFont;
+  min-height: 100vh;
+  padding: 120px 0;
+
+  &:after
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 138%;
+    background-color: rgba(#000, 85%);
+    z-index: 1;
+
+  .modify-profile-info
+    background-color: #eeeeee;
+    border-radius: 5px;
+    color: $textColor;
+    padding: 30px 60px 20px 60px;
+    position: relative;
+    z-index: 3;
+
+    @media (max-width: $smallDevice)
+      top: -40px;
+      padding: 20px 30px;
+      width: 90%;
+
+    .back-button 
+      background-color: desaturate($primaryColor, 10%);
+      border-radius: 5px;
+      color: #eee;
+      display: inline-block;
+      transition: background-color 200ms,
+                  transform 300ms;
+
+      &:hover 
+        background-color: darken($primaryColor, 25%);
+        transform: scale(1.1);
+      
+      padding: 10px 20px;
+      margin-bottom: 25px;
+      text-decoration: none;
+    h2 
+      font-size: 30px;
+      margin-bottom: 20px;
+      text-align: center;
+
+    h3 
+      font-size: 20px;
+      font-weight: normal;
+      margin-bottom: 15px;
+    
+    .form-group
+      margin-bottom: 20px;
+
+      input
+        background-color: #eeeeee;
+        border: none;
+        border-bottom: 2px solid rgba($textColor, 40%);
+        font-size: 18px;
+        padding: 10px 5px;
+
+        &:focus 
+          border-bottom: 2px solid $primaryColor;
+          outline: none;
+
+      input::placeholder
+        color: $textColor;
+        opacity: 0.4;
+
+      .form-info 
+        color: rgba($textColor, 60%);
+        padding-left: 5px;
+        margin-top: 5px;
+
+    button 
+      background-color: darken($primaryColor, 10%);
+      border: none;
+      border-radius: 5px;
+      color: #eeeeee;
+      font-size: 18px;
+      margin-top: 30px;
+      padding: 10px 20px;
+      transition: background-color 200ms;
+
+      &:hover 
+        background-color: darken($secondaryColor, 20%);
+
+    
+    textarea
+      border: 2px solid rgba($textColor, 40%);
+      font-family: $siteFont;
+      padding: 10px;
+      min-height: 100px;
+      resize: none;
+      width: 100%;
