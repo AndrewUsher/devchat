@@ -1,0 +1,90 @@
+@import 'variables.styl'
+
+.dashboard
+  background: darken($primaryColor, 20%);
+  background-size: cover;
+  font-family: $siteFont;
+  min-height: 100vh;
+  padding: 100px 0 0 0;
+
+
+
+  .dashboard-info
+    background-color: #eeeeee;
+    border-radius: 2px;
+    color: $textColor;
+    min-height: 90vh;
+    padding: 30px 40px 20px 40px;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    z-index: 3;
+
+    @media (max-width: $smallDevice)
+      top: -40px;
+      width: 92%;
+      padding: 40px 30px;
+
+    h2 
+      font-size: 36px;
+      margin-bottom: 40px;
+
+    h3 
+      font-size: 24px;
+      font-weight: normal;
+      margin-bottom: 60px;
+      text-align: center;
+
+      a 
+        color: $secondaryColor;
+        text-decoration: none;
+    
+    h4 
+      font-size: 24px;
+      margin-bottom: 25px;
+    
+    button 
+      background-color: lighten($tertiaryColor, 20%);
+      border: none;
+      border-radius: 2%;
+      color: #eee;
+      font-size: 18px;
+      padding: 10px 15px;
+      transition: background-color 200ms,
+                  transform 400ms;
+
+      &:hover 
+        background-color: darken($tertiaryColor, 20%);
+        transform: scale(1.1);
+
+    table 
+      border: 1px solid $textColor;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+      padding: 5px 0;
+
+      th 
+        font-size: 18px;
+        border-bottom: 1px solid $textColor;
+        border-right: 1px solid $textColor;
+        padding: 5px 10px;
+
+      td 
+        border-right: 1px solid $textColor;
+        border-bottom: 1px solid $textColor;
+        font-size: 16px;
+        padding: 10px 15px;
+
+        button 
+          background-color: lighten($primaryColor, 20%);
+          color: #eee;
+          cursor: pointer;
+          font-size: 18px;
+          border: none;
+          padding: 5px 10px;
+          transition: background-color 200ms,
+                      transform 400ms;
+
+          &:hover 
+            background-color: darken($primaryColor, 20%);
+      
