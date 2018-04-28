@@ -157,7 +157,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
 // @router POST api/profile/experience
 // @desc Add experience to current profile
 // @access Private
-router.post('/experience', passport.authenticate('jwt', { session: false }, (req, res) => {
+router.post('/experience', passport.authenticate('jwt', { session: false }), (req, res) => {
   const { id } = req.user
   const { errors, isValid } = validateExperienceInput(req.body)
 
@@ -165,10 +165,10 @@ router.post('/experience', passport.authenticate('jwt', { session: false }, (req
     return res.status(400).json(errors)
   }
 
-  Profile.find({ user: id })
+  Profile.findOne({ user: id })
     .then(profile => {
       const { title, company, location, from, to, current, description } = req.body
-      const { experience } = profile
+      let { experience } = profile
       const newExperience = {
         title,
         company,
@@ -179,17 +179,23 @@ router.post('/experience', passport.authenticate('jwt', { session: false }, (req
         description
       }
 
-      experience.unshift(newExperience)
+      if (!experience) {
+        experience = []
+        experience.push(newExperience)
+      } else {
+        experience.unshift(newExperience)
+      }
+
       profile
         .save()
         .then(profile => res.json(profile))
     })
-}))
+})
 
 // @router POST api/profile/education
 // @desc Add education to current profile
 // @access Private
-router.post('/education', passport.authenticate('jwt', { session: false }, (req, res) => {
+router.post('/education', passport.authenticate('jwt', { session: false }), (req, res) => {
   const { id } = req.user
   const { errors, isValid } = validateEducationInput(req.body)
 
@@ -197,10 +203,9 @@ router.post('/education', passport.authenticate('jwt', { session: false }, (req,
     return res.status(400).json(errors)
   }
 
-  Profile.find({ user: id })
+  Profile.findOne({ user: id })
     .then(profile => {
       const { school, degree, fieldofstudy, from, to, current, description } = req.body
-      const { education } = profile
       const newEducation = {
         school,
         degree,
@@ -211,17 +216,24 @@ router.post('/education', passport.authenticate('jwt', { session: false }, (req,
         description
       }
 
-      education.unshift(newEducation)
+      if (!profile.education) {
+        profile.education = []
+        profile.education.push(newEducation)
+      } else {
+        profile.education.unshift(newEducation)
+      }
+
       profile
         .save()
         .then(profile => res.json(profile))
     })
-}))
+    .catch(error => console.log(error))
+})
 
 // @router DELETE api/profile/experience/:experienceId
 // @desc Delete experience from current profile
 // @access Private
-router.delete('experience/:experienceId', passport.authenticate('jwt', { session: false }, (req, res) => {
+router.delete('experience/:experienceId', passport.authenticate('jwt', { session: false }), (req, res) => {
   const { id } = req.user
   const { experienceId } = req.params
 
@@ -238,7 +250,7 @@ router.delete('experience/:experienceId', passport.authenticate('jwt', { session
         .save()
         .then(profile => res.json(profile))
     })
-}))
+})
 
 // @router DELETE api/profile/education/:education_id
 // @desc Delete education from current profile
