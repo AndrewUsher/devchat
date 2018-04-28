@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { logoutUser } from '../actions/auth'
+import { clearProfile } from '../actions/profile'
+import '../styles/_header.styl'
 
 class Header extends Component {
   constructor (props) {
@@ -12,6 +14,7 @@ class Header extends Component {
 
   logoutUser (event) {
     event.preventDefault()
+    this.props.clearProfile()
     this.props.logoutUser()
   }
   render () {
@@ -54,6 +57,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
+  clearProfile: PropTypes.func.isRequired,
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 }
@@ -62,4 +66,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 })
 
-export default connect(mapStateToProps, { logoutUser })(Header)
+export default connect(mapStateToProps, { clearProfile, logoutUser })(Header)
