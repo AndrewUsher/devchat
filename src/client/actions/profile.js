@@ -1,0 +1,125 @@
+import axios from 'axios'
+import { GET_PROFILE, PROFILE_LOADING, GET_ERRORS, CLEAR_PROFILE, SET_USER } from './types'
+
+export const setLoading = () => {
+  return {
+    type: PROFILE_LOADING
+  }
+}
+
+export const clearProfile = () => {
+  return {
+    type: CLEAR_PROFILE
+  }
+}
+
+export const createProfile = (profile, history) => dispatch => {
+  axios
+    .post(`http://localhost:3000/api/profile`, profile)
+    .then(res => history.push('/dashboard'))
+    .catch(error =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: error.response.data
+      })
+    )
+}
+
+export const getProfile = () => dispatch => {
+  dispatch(setLoading())
+
+  axios
+    .get('http://localhost:3000/api/profile')
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(() =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: {}
+      })
+    )
+}
+
+export const addEducation = (education, history) => dispatch => {
+  axios
+    .post('http://localhost:3000/api/profile/education', education)
+    .then(() => history.push('/dashboard'))
+    .catch(error =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: error.data
+      })
+    )
+}
+
+export const addExperience = (experience, history) => dispatch => {
+  axios
+    .post('http://localhost:3000/api/profile/experience', experience)
+    .then(res => history.push('/dashboard'))
+    .catch(error =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: error.response.data
+      })
+    )
+}
+
+// Delete Experience
+export const deleteExperience = id => dispatch => {
+  axios
+    .delete(`http://localhost:3000/api/profile/experience/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    )
+}
+
+// Delete Education
+export const deleteEducation = id => dispatch => {
+  axios
+    .delete(`http://localhost:3000/api/profile/education/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(error =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: error.response.data
+      })
+    )
+}
+
+// Delete account & profile
+export const deleteAccount = () => dispatch => {
+  if (window.confirm('This action cannot be undone. Are you sure?')) {
+    axios
+      .delete('http://localhost:3000/api/profile')
+      .then(res =>
+        dispatch({
+          type: SET_USER,
+          payload: {}
+        })
+      )
+      .catch(error =>
+        dispatch({
+          type: GET_ERRORS,
+          payload: error.res.data
+        })
+      )
+  }
+}
