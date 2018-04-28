@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { registerUser } from '../actions/auth'
+import '../styles/_onboarding.styl'
 
 class Register extends Component {
   constructor (props) {
@@ -67,13 +68,10 @@ class Register extends Component {
     const { name, email, password, password2 } = this.state
 
     return (
-      <div className="register">
-        <div className="container">
+      <div className="onboarding">
+        <div className="onboarding-info">
           <h2>Sign Up</h2>
-          <p>
-            Create a new account
-          </p>
-          <form onSubmit={this.formSubmit}>
+          <form noValidate onSubmit={this.formSubmit}>
             <div className="form-group">
               <input
                 type="text"
@@ -97,10 +95,6 @@ class Register extends Component {
               {errors.email && (
                 <div className="form-invalid">{errors.email}</div>
               )}
-              <small>
-                This site uses Gravatar so if you want a profile image, use
-                a Gravatar email
-              </small>
             </div>
             <div className="form-group">
               <input
@@ -126,7 +120,7 @@ class Register extends Component {
                 <div className="form-invalid">{errors.password2}</div>
               )}
             </div>
-            <input type="submit" value="Register" />
+            <button type="submit">Sign Up</button>
           </form>
         </div>
       </div>
