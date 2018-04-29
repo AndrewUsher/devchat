@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from '../store/index'
 import addAuthToken from '../utils/addAuthToken'
@@ -9,6 +9,7 @@ import jwtDecode from 'jwt-decode'
 
 // import components
 
+import PrivateRoute from '../components/PrivateRoute'
 import Header from '../components/Header'
 import Home from '../components/Home'
 import Dashboard from '../components/Dashboard'
@@ -20,6 +21,10 @@ import CreateProfile from '../components/CreateProfile'
 import EditProfile from '../components/EditProfile'
 import AddExperience from '../components/AddExperience'
 import AddEducation from '../components/AddEducation'
+import Profiles from '../components/Profiles'
+import Profile from '../components/Profile'
+import Posts from '../components/Posts'
+import Post from '../components/Post'
 
 if (localStorage.token) {
   const { token } = localStorage
@@ -36,7 +41,7 @@ if (localStorage.token) {
 }
 
 class App extends Component {
-  render () {
+  render() {
     return (
       <Provider store={store}>
         <Router>
@@ -45,8 +50,14 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/developers" component={Developers} />
+            <Switch>
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            </Switch>
+
+            <Route exact path="/profile/:handle" component={Profile} />
+            <Route exact path="/feed" component={Posts} />
+            <Route exact path="/post/:id" component={Post} />
+            <Route exact path="/profiles" component={Profiles} />
             <Route exact path="/create-profile" component={CreateProfile} />
             <Route exact path="/edit-profile" component={EditProfile} />
             <Route exact path="/add-experience" component={AddExperience} />
