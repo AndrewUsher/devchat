@@ -230,50 +230,6 @@ router.post('/education', passport.authenticate('jwt', { session: false }), (req
     .catch(error => console.log(error))
 })
 
-// @router DELETE api/profile/experience/:experienceId
-// @desc Delete experience from current profile
-// @access Private
-router.delete('experience/:experienceId', passport.authenticate('jwt', { session: false }), (req, res) => {
-  const { id } = req.user
-  const { experienceId } = req.params
-
-  Profile.findOne({ user: id })
-    .then(profile => {
-      const { experience } = profile
-      const removedItem = experience
-        .map(({ id }) => id)
-        .indexOf(experienceId)
-
-      experience.splice(removedItem, 1)
-
-      profile
-        .save()
-        .then(profile => res.json(profile))
-    })
-})
-
-// @router DELETE api/profile/education/:education_id
-// @desc Delete education from current profile
-// @access Private
-router.delete('education/:educationId', passport.authenticate('jwt', { session: false }, (req, res) => {
-  const { id } = req.user
-  const { educationId } = req.params
-
-  Profile.findOne({ user: id })
-    .then(profile => {
-      const { education } = profile
-      const removedItem = education
-        .map(({ id }) => id)
-        .indexOf(educationId)
-
-      education.splice(removedItem, 1)
-
-      profile
-        .save()
-        .then(profile => res.json(profile))
-    })
-}))
-
 // @route DELETE api/profile
 // @desc Delete user and profile
 // @access Private
