@@ -5,10 +5,6 @@ import Moment from 'react-moment'
 import { deleteEducation } from '../actions/profile'
 
 class Education extends Component {
-  onDeleteClick (id) {
-    this.props.deleteEducation(id)
-  }
-
   render () {
     const education = this.props.education.map(edu => (
       <tr key={edu._id}>
@@ -22,13 +18,6 @@ class Education extends Component {
             <Moment format="YYYY/MM/DD">{edu.to}</Moment>
           )}
         </td>
-        <td>
-          <button
-            onClick={this.onDeleteClick.bind(this, edu._id)}
-          >
-            Delete
-          </button>
-        </td>
       </tr>
     ))
     return (
@@ -40,7 +29,6 @@ class Education extends Component {
               <th>School</th>
               <th>Degree</th>
               <th>Time Period</th>
-              <th>Remove</th>
             </tr>
             {education}
           </thead>
