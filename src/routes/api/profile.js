@@ -41,7 +41,7 @@ router.get('/',
 // @desc Get all profiles
 // #access Public
 router.get('/all',
-  passport.authenticate('jwt', { session: false }, (req, res) => {
+  passport.authenticate('jwt', { session: false }), (req, res) => {
     let errors = {}
 
     Profile
@@ -56,7 +56,7 @@ router.get('/all',
         res.json(profiles)
       })
       .catch(() => res.status(404).json({ profile: 'There are no profiles' }))
-  }))
+  })
 
 // @route GET api/profile/handle/:handle
 // @desc Get profile by handle
