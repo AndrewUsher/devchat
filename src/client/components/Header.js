@@ -9,7 +9,18 @@ import '../styles/_header.styl'
 class Header extends Component {
   constructor (props) {
     super(props)
+    this.state = {
+      transparent: false
+    }
     this.logoutUser = this.logoutUser.bind(this)
+  }
+
+  componentDidMount () {
+    window.addEventListener('scroll', () => {
+      let scrollPosition = window.scrollY
+
+      scrollPosition < 60 ? this.setState({ transparent: true }) : this.setState({ transparent: false })
+    })
   }
 
   logoutUser (event) {
@@ -17,17 +28,24 @@ class Header extends Component {
     this.props.clearProfile()
     this.props.logoutUser()
   }
+
   render () {
     const { isAuthed, user } = this.props.auth
+    const { transparent } = this.state
     let navLinks
     if (isAuthed) {
       navLinks = (
         <nav>
           <li>
-            <Link to="/developers">Developers</Link>
+            <Link to="/feed">Feed</Link>
           </li>
           <li>
-            <img src={user.avatar} alt={user.name} title="You must have a Gravatar to display an image" />
+            <Link to="/profiles">Developers</Link>
+          </li>
+          <li>
+            <Link to="/dashboard">
+              <img src={user.avatar} alt={user.name} title="You must have a Gravatar to display an image" />
+            </Link>
           </li>
           <li>
             <a href="#" onClick={this.logoutUser}>Logout</a>
@@ -48,7 +66,7 @@ class Header extends Component {
     }
 
     return (
-      <header>
+      <header className={transparent ? "none" : "colored"}>
         <h1>Devchat</h1>
         {navLinks}
       </header>
