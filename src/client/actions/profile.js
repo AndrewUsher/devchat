@@ -68,42 +68,6 @@ export const addExperience = (experience, history) => dispatch => {
     )
 }
 
-// Delete Experience
-export const deleteExperience = id => dispatch => {
-  axios
-    .delete(`http://localhost:3000/api/profile/experience/${id}`)
-    .then(res =>
-      dispatch({
-        type: GET_PROFILE,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    )
-}
-
-// Delete Education
-export const deleteEducation = id => dispatch => {
-  axios
-    .delete(`http://localhost:3000/api/profile/education/${id}`)
-    .then(res =>
-      dispatch({
-        type: GET_PROFILE,
-        payload: res.data
-      })
-    )
-    .catch(error =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: error.response.data
-      })
-    )
-}
-
 // Delete account & profile
 export const deleteAccount = () => dispatch => {
   if (window.confirm('This action cannot be undone. Are you sure?')) {
