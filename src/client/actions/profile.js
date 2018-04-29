@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_PROFILE, PROFILE_LOADING, GET_ERRORS, CLEAR_PROFILE, SET_USER } from './types'
+import { GET_PROFILE, PROFILE_LOADING, GET_ERRORS, CLEAR_PROFILE, SET_USER, GET_PROFILES } from './types'
 
 export const setLoading = () => {
   return {
@@ -30,6 +30,25 @@ export const getProfile = () => dispatch => {
 
   axios
     .get('http://localhost:3000/api/profile')
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(() =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: {}
+      })
+    )
+}
+
+export const getProfileByHandle = handle => dispatch => {
+  dispatch(setLoading())
+
+  axios
+    .get(`http://localhost:3000/api/profile/handle/${handle}`)
     .then(res =>
       dispatch({
         type: GET_PROFILE,
@@ -86,4 +105,21 @@ export const deleteAccount = () => dispatch => {
         })
       )
   }
+}
+
+export const getProfiles = () => dispatch => {
+  axios
+    .get('http://localhost:3000/api/profile/all')
+    .then(res =>
+      dispatch({
+        type: GET_PROFILES,
+        payload: res.data
+      })
+    )
+    .catch(error =>
+      dispatch({
+        type: GET_PROFILES,
+        payload: null
+      })
+    )
 }
