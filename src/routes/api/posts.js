@@ -14,13 +14,14 @@ const validatePostInput = require('../../validation/post')
 // @access Public
 router.get('/hello', (req, res) => res.json({ message: 'Posts works' }))
 
-// @route GET api/posts/:id
+// @route GET api/posts/
 // @desc Get all posts
 // @access Public
 router.get('/', (req, res) => {
   Post
     .find()
     .sort({ date: -1 })
+    .then(posts => res.json(posts))
     .catch(() => res.status(404).json({ nopostsfound: 'No posts found' }))
 })
 
@@ -37,7 +38,7 @@ router.get('/:id', (req, res) => {
     }))
 })
 
-// @route GET api/posts
+// @route POST api/posts
 // @desc Add post
 // @access Private
 router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -47,7 +48,8 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
     return res.status(400).json(errors)
   }
 
-  const { name, text, id } = req.user
+  const { name, id } = req.user
+  const { text } = req.body
   const newPost = new Post({
     text,
     name,
@@ -132,7 +134,7 @@ router.post('/comment/:id', passport.authenticate('jwt', { session: false }), (r
           id: userId
         }
 
-        post.comments.unshift(newComment)
+        post.comments.push(newComment)
 
         post
           .save()
