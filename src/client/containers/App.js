@@ -13,7 +13,6 @@ import PrivateRoute from '../components/PrivateRoute'
 import Header from '../components/Header'
 import Home from '../components/Home'
 import Dashboard from '../components/Dashboard'
-import Developers from '../components/Developers'
 import Login from '../components/Login'
 import Register from '../components/Register'
 import Footer from '../components/Footer'
@@ -36,18 +35,22 @@ if (localStorage.token) {
   if (decodedToken.exp < currentTime) {
     store.dispatch(logoutUser())
     store.dispatch(clearProfile())
-    window.location.href = '/login'
+    window.location.href = '/home'
   }
 }
 
 class App extends Component {
-  render() {
+  componentDidMount () {
+    console.log(this.props)
+  }
+  render () {
     return (
       <Provider store={store}>
         <Router>
           <div>
             <Header />
             <Route exact path="/" component={Home} />
+            <Route exact path="/home" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Switch>
