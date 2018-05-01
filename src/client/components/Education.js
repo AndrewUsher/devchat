@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Moment from 'react-moment'
-import { deleteEducation } from '../actions/profile'
 
 class Education extends Component {
   render () {
@@ -39,10 +37,9 @@ class Education extends Component {
 }
 
 Education.propTypes = {
-  deleteEducation: PropTypes.func.isRequired,
   education: PropTypes.shape({
     map: PropTypes.func
   })
 }
 
-export default connect(null, { deleteEducation })(Education)
+export default Education
