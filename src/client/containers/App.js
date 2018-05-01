@@ -11,7 +11,7 @@ import jwtDecode from 'jwt-decode'
 
 import PrivateRoute from '../components/PrivateRoute'
 import Header from '../components/Header'
-import Home from '../components/Home'
+import Home from '../components/Onboarding/Home'
 import Dashboard from '../components/Dashboard'
 import Login from '../components/Onboarding/Login'
 import Register from '../components/Onboarding/Register'

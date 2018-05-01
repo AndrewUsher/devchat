@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../styles/_home.styl'
+import '../../styles/_home.styl'
 
 const Home = () => (
   <main className="landing">
