@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { registerUser } from '../actions/auth'
-import '../styles/_onboarding.styl'
+import { registerUser } from '../../actions/auth'
+import TextFieldGroup from '../inputs/TextFieldGroup'
+import '../../styles/_onboarding.styl'
 
 class Register extends Component {
   constructor (props) {
@@ -72,54 +73,39 @@ class Register extends Component {
         <div className="onboarding-info">
           <h2>Sign Up</h2>
           <form noValidate onSubmit={this.formSubmit}>
-            <div className="form-group">
-              <input
-                type="text"
-                placeholder="Name"
-                name="name"
-                value={name}
-                onChange={this.formChange}
-              />
-              {errors.name && (
-                <div className="form-invalid">{errors.name}</div>
-              )}
-            </div>
-            <div className="form-group">
-              <input
-                type="email"
-                placeholder="Email"
-                name="email"
-                value={email}
-                onChange={this.formChange}
-              />
-              {errors.email && (
-                <div className="form-invalid">{errors.email}</div>
-              )}
-            </div>
-            <div className="form-group">
-              <input
-                type="password"
-                placeholder="Password"
-                name="password"
-                value={password}
-                onChange={this.formChange}
-              />
-              {errors.password && (
-                <div className="form-invalid">{errors.password}</div>
-              )}
-            </div>
-            <div className="form-group">
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                name="password2"
-                value={password2}
-                onChange={this.formChange}
-              />
-              {errors.password2 && (
-                <div className="form-invalid">{errors.password2}</div>
-              )}
-            </div>
+
+            <TextFieldGroup
+              placeholder="Full Name"
+              name="name"
+              type="text"
+              value={name}
+              onChange={this.formChange}
+              error={errors.name}
+            />
+            <TextFieldGroup
+              placeholder="Email"
+              name="email"
+              type="email"
+              value={email}
+              onChange={this.formChange}
+              error={errors.email}
+            />
+            <TextFieldGroup
+              placeholder="Password"
+              name="password"
+              type="password"
+              value={password}
+              onChange={this.formChange}
+              error={errors.password}
+            />
+            <TextFieldGroup
+              placeholder="Confirm Password"
+              name="password2"
+              type="password"
+              value={password2}
+              onChange={this.formChange}
+              error={errors.password2}
+            />
             <button type="submit">Sign Up</button>
           </form>
         </div>
