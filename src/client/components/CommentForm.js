@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import TextareaFieldGroup from './TextareaFieldGroup'
+import TextareaFieldGroup from './inputs/TextareaFieldGroup'
 import { addComment } from '../actions/post'
 
 class CommentForm extends Component {

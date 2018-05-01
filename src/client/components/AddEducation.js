@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import TextFieldGroup from './inputs/TextFieldGroup'
-import TextareaFieldGroup from './TextareaFieldGroup'
+import TextareaFieldGroup from './inputs/TextareaFieldGroup'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { addEducation } from '../actions/profile'

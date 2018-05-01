@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { createProfile } from '../actions/profile'
 import InputGroup from './InputGroup'
-import TextareaFieldGroup from './TextareaFieldGroup'
+import TextareaFieldGroup from './inputs/TextareaFieldGroup'
 import TextFieldGroup from './inputs/TextFieldGroup'
 import '../styles/_modify-profile.styl'
 

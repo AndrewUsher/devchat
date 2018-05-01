@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import TextareaFieldGroup from './TextareaFieldGroup'
+import TextareaFieldGroup from './inputs/TextareaFieldGroup'
 import { addPost } from '../actions/post'
 import '../styles/_post-form.styl'
 
