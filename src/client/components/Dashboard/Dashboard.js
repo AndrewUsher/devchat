@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { deleteAccount, getProfile } from '../actions/profile'
-import Loader from './Loader'
+import { deleteAccount, getProfile } from '../../actions/profile'
+import Loader from '../utils/Loader'
 import ProfileActions from './ProfileActions'
 import Experience from './Experience'
 import Education from './Education'
-import '../styles/_dashboard.styl'
+import '../../styles/_dashboard.styl'
 
 class Dashboard extends Component {
   componentDidMount () {

@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import ProfileHeader from './ProfileHeader'
+import Header from './Header'
 import About from './About'
 import Credentials from './Credentials'
 import Github from './Github'
-import Loader from './Loader'
-import { getProfileByHandle } from '../actions/profile'
+import Loader from '../utils/Loader'
+import { getProfileByHandle } from '../../actions/profile'
 
 class Profile extends Component {
   componentDidMount () {
@@ -34,7 +34,7 @@ class Profile extends Component {
           <Link to="/profiles">
             Back To Profiles
           </Link>
-          <ProfileHeader profile={profile} />
+          <Header profile={profile} />
           <About profile={profile} />
           <Credentials
             education={profile.education}

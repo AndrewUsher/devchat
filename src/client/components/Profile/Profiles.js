@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import Loader from './Loader'
+import Loader from '../utils/Loader'
 import ProfileItem from './ProfileItem'
-import { getProfiles } from '../actions/profile'
-import '../styles/_profiles.styl'
+import { getProfiles } from '../../actions/profile'
+import '../../styles/_profiles.styl'
 
 class Profiles extends Component {
   componentDidMount () {

@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { deletePost, addLike, removeLike } from '../actions/post'
-import '../styles/_post-item.styl'
+import { deletePost, addLike, removeLike } from '../../actions/post'
+import '../../styles/_post-item.styl'
 
 class PostItem extends Component {
   onDeleteClick (id) {
@@ -12,7 +12,6 @@ class PostItem extends Component {
 
   onLikeClick (id) {
     this.props.addLike(id)
-    console.log(this.props.post.user)
   }
 
   onUnlikeClick (id) {

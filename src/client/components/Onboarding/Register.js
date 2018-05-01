@@ -73,7 +73,6 @@ class Register extends Component {
         <div className="onboarding-info">
           <h2>Sign Up</h2>
           <form noValidate onSubmit={this.formSubmit}>
-
             <TextFieldGroup
               placeholder="Full Name"
               name="name"

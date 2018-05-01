@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import '../styles/_profile-item.styl'
+import '../../styles/_profile-item.styl'
 
 const ProfileItem = ({ profile }) => (
   <div className="profile-item">

@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { logoutUser } from '../actions/auth'
-import { clearProfile } from '../actions/profile'
-import '../styles/_header.styl'
+import { logoutUser } from '../../actions/auth'
+import { clearProfile } from '../../actions/profile'
+import '../../styles/_header.styl'
 
 class Header extends Component {
   constructor (props) {

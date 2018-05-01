@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import TextFieldGroup from './inputs/TextFieldGroup'
-import TextareaFieldGroup from './inputs/TextareaFieldGroup'
-import InputGroup from './inputs/InputGroup'
-import { createProfile, getProfile } from '../actions/profile'
-import isEmpty from '../../validation/is-empty'
-import '../styles/_modify-profile.styl'
+import TextFieldGroup from '../inputs/TextFieldGroup'
+import TextareaFieldGroup from '../inputs/TextareaFieldGroup'
+import InputGroup from '../inputs/InputGroup'
+import { createProfile, getProfile } from '../../actions/profile'
+import isEmpty from '../../utils/is-empty'
+import '../../styles/_modify-profile.styl'
 
 class EditProfile extends Component {
   constructor (props) {

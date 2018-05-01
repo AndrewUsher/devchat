@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { createProfile } from '../actions/profile'
-import InputGroup from './inputs/InputGroup'
-import TextareaFieldGroup from './inputs/TextareaFieldGroup'
-import TextFieldGroup from './inputs/TextFieldGroup'
-import '../styles/_modify-profile.styl'
+import { createProfile } from '../../actions/profile'
+import InputGroup from '../inputs/InputGroup'
+import TextareaFieldGroup from '../inputs/TextareaFieldGroup'
+import TextFieldGroup from '../inputs/TextFieldGroup'
+import '../../styles/_modify-profile.styl'
 
 class CreateProfile extends Component {
   constructor (props) {

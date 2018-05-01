@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const ProfileHeader = ({ profile }) => {
+const Header = ({ profile }) => {
   let socialLinks
   if (profile.social) {
     socialLinks = (
@@ -92,8 +92,8 @@ const ProfileHeader = ({ profile }) => {
   )
 }
 
-ProfileHeader.propTypes = {
+Header.propTypes = {
   profile: PropTypes.object.isRequired
 }
 
-export default ProfileHeader
+export default Header

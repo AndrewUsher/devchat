@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import TextareaFieldGroup from './inputs/TextareaFieldGroup'
-import { addPost } from '../actions/post'
-import '../styles/_post-form.styl'
+import TextareaFieldGroup from '../../inputs/TextareaFieldGroup'
+import { addComment } from '../../../actions/post'
 
 class Form extends Component {
   constructor (props) {
@@ -27,15 +25,16 @@ class Form extends Component {
     event.preventDefault()
 
     const { user } = this.props.auth
+    const { postId } = this.props
     const { text } = this.state
 
-    const post = {
+    const comment = {
       text,
       name: user.name,
       avatar: user.avatar
     }
 
-    this.props.addPost(post)
+    this.props.addComment(postId, comment)
     this.setState({ text: '' })
   }
 
@@ -51,7 +50,7 @@ class Form extends Component {
 
     return (
       <div className="post-form">
-        <h2>Say Something...</h2>
+        <h2>Add a comment</h2>
         <form onSubmit={this.formSubmit}>
           <div className="form-group">
             <TextareaFieldGroup
@@ -71,15 +70,9 @@ class Form extends Component {
   }
 }
 
-Form.propTypes = {
-  addPost: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
-}
-
 const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors
 })
 
-export default connect(mapStateToProps, { addPost })(Form)
+export default connect(mapStateToProps, { addComment })(Form)

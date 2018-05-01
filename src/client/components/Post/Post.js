@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import PostItem from './PostItem'
-import CommentForm from './CommentForm'
-import CommentFeed from './CommentFeed'
-import Loader from './Loader'
-import { getPost } from '../actions/post'
+import CommentForm from './Comments/Form'
+import CommentFeed from './Comments/Feed'
+import Loader from '../utils/Loader'
+import { getPost } from '../../actions/post'
 
 class Post extends Component {
   componentDidMount () {

@@ -9,21 +9,21 @@ import jwtDecode from 'jwt-decode'
 
 // import components
 
-import PrivateRoute from '../components/PrivateRoute'
-import Header from '../components/Header'
+import PrivateRoute from '../components/utils/PrivateRoute'
+import Header from '../components/Layout/Header'
 import Home from '../components/Onboarding/Home'
-import Dashboard from '../components/Dashboard'
+import Dashboard from '../components/Dashboard/Dashboard'
 import Login from '../components/Onboarding/Login'
 import Register from '../components/Onboarding/Register'
-import Footer from '../components/Footer'
-import CreateProfile from '../components/CreateProfile'
-import EditProfile from '../components/EditProfile'
-import AddExperience from '../components/AddExperience'
-import AddEducation from '../components/AddEducation'
-import Profiles from '../components/Profiles'
-import Profile from '../components/Profile'
-import Posts from '../components/Posts'
-import Post from '../components/Post'
+import Footer from '../components/Layout/Footer'
+import CreateProfile from '../components/Onboarding/CreateProfile'
+import EditProfile from '../components/Dashboard/EditProfile'
+import AddExperience from '../components/Dashboard/AddExperience'
+import AddEducation from '../components/Dashboard/AddEducation'
+import Profiles from '../components/Profile/Profiles'
+import Profile from '../components/Profile/Profile'
+import Posts from '../components/Post/Posts'
+import Post from '../components/Post/Post'
 
 if (localStorage.token) {
   const { token } = localStorage

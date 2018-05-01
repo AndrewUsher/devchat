@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Form from './Form'
 import Feed from './Feed'
-import Loader from './Loader'
-import { getPosts } from '../actions/post'
-import '../styles/_posts.styl'
+import Loader from '../utils/Loader'
+import { getPosts } from '../../actions/post'
+import '../../styles/_posts.styl'
 
 class Posts extends Component {
   componentDidMount () {

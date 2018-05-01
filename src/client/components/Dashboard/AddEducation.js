@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import TextFieldGroup from './inputs/TextFieldGroup'
-import TextareaFieldGroup from './inputs/TextareaFieldGroup'
+import TextFieldGroup from '../inputs/TextFieldGroup'
+import TextareaFieldGroup from '../inputs/TextareaFieldGroup'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { addExperience } from '../actions/profile'
+import { addEducation } from '../../actions/profile'
 
-class AddExperience extends Component {
+class AddEducation extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      company: '',
-      title: '',
-      location: '',
+      school: '',
+      degree: '',
+      fieldofstudy: '',
       from: '',
       to: '',
       current: false,
@@ -28,7 +28,6 @@ class AddExperience extends Component {
 
   componentWillReceiveProps (nextProps) {
     const { errors } = nextProps
-
     if (errors) {
       this.setState({ errors })
     }
@@ -36,28 +35,28 @@ class AddExperience extends Component {
 
   formSubmit (event) {
     event.preventDefault()
-    const { addExperience, history } = this.props
+    const { history } = this.props
     const {
-      company,
-      title,
-      location,
+      school,
+      degree,
+      fieldofstudy,
       from,
       to,
       current,
       description
     } = this.state
 
-    const experience = {
-      company,
-      title,
-      location,
+    const education = {
+      school,
+      degree,
+      fieldofstudy,
       from,
       to,
       current,
       description
     }
 
-    addExperience(experience, history)
+    this.props.addEducation(education, history)
   }
 
   formChange (event) {
@@ -75,16 +74,15 @@ class AddExperience extends Component {
   }
 
   render () {
-    const { errors } = this.state
     const {
-      company,
-      title,
-      location,
+      errors,
+      school,
+      degree,
+      fieldofstudy,
       from,
       to,
       current,
-      description,
-      disabled
+      description
     } = this.state
 
     return (
@@ -93,32 +91,32 @@ class AddExperience extends Component {
           <Link to="/dashboard" className="back-button">
             Go Back
           </Link>
-          <h2>Add Experience</h2>
+          <h2>Add Education</h2>
           <div className="form-info">
-            Add any job or position that you have had in the past or currently have
+            Add any school, bootcamp, etc that you have attended
           </div>
           <div className="form-info">* = required fields</div>
           <form onSubmit={this.formSubmit}>
             <TextFieldGroup
-              placeholder="* Company"
-              name="company"
-              value={company}
+              placeholder="* School"
+              name="school"
+              value={school}
               onChange={this.formChange}
-              error={errors.company}
+              error={errors.school}
             />
             <TextFieldGroup
-              placeholder="* Job Title"
-              name="title"
-              value={title}
+              placeholder="* Degree or Certification"
+              name="degree"
+              value={degree}
               onChange={this.formChange}
-              error={errors.title}
+              error={errors.degree}
             />
             <TextFieldGroup
-              placeholder="Location"
-              name="location"
-              value={location}
+              placeholder="* Field of Study"
+              name="fieldofstudy"
+              value={fieldofstudy}
               onChange={this.formChange}
-              error={errors.location}
+              error={errors.fieldofstudy}
             />
             <h3>From Date</h3>
             <TextFieldGroup
@@ -135,30 +133,34 @@ class AddExperience extends Component {
               value={to}
               onChange={this.formChange}
               error={errors.to}
-              disabled={disabled ? 'disabled' : ''}
+              disabled={this.state.disabled ? 'disabled' : ''}
             />
             <div className="form-group">
               <input
                 type="checkbox"
+                className="form-check-input"
                 name="current"
                 value={current}
                 checked={current}
                 onChange={this.onCheck}
                 id="current"
               />
-              <label htmlFor="current">
+              <label htmlFor="current" >
                 Current Job
               </label>
             </div>
             <TextareaFieldGroup
-              placeholder="Job Description"
+              placeholder="Program Description"
               name="description"
               value={description}
               onChange={this.formChange}
               error={errors.description}
-              info="Tell us about the the position"
+              info="Tell us about the program that you were in"
             />
-            <button type="submit">Submit</button>
+            <input
+              type="submit"
+              value="Submit"
+            />
           </form>
         </div>
       </div>
@@ -166,11 +168,11 @@ class AddExperience extends Component {
   }
 }
 
-AddExperience.propTypes = {
-  addExperience: PropTypes.func.isRequired,
+AddEducation.propTypes = {
+  addEducation: PropTypes.func.isRequired,
+  history: PropTypes.object,
   profile: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired,
-  history: PropTypes.array
+  errors: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -178,6 +180,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 })
 
-export default connect(mapStateToProps, { addExperience })(
-  withRouter(AddExperience)
-)
+export default connect(mapStateToProps, { addEducation })(withRouter(AddEducation))

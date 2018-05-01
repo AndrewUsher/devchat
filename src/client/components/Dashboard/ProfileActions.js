@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../styles/_profile-actions.styl'
+import '../../styles/_profile-actions.styl'
 
 const ProfileActions = () => (
   <div className="profile-actions">
