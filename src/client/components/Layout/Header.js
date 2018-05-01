@@ -10,7 +10,7 @@ class Header extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      transparent: false
+      transparent: true
     }
     this.logoutUser = this.logoutUser.bind(this)
   }
