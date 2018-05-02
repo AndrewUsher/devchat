@@ -8,7 +8,7 @@ const About = (props) => {
 
   const skills = profile.skills.map((skill, index) => (
     <div key={index}>
-      {skill}
+      <p>{skill}</p>
     </div>
   ))
 
@@ -19,8 +19,8 @@ const About = (props) => {
         {profile.bio ? (
           <span>{firstName} does not have a bio</span>
         ) : (
-          <span>{profile.bio}</span>
-        )}
+            <span>{profile.bio}</span>
+          )}
       </p>
       <h3>Skill Set</h3>
       <div>
