@@ -75,19 +75,23 @@ const Header = ({ profile }) => {
 
   return (
     <div className="profile-header">
-      <div className="container">
-        <img
-          src={profile.user.avatar}
-          alt={profile.user.name}
-        />
+      <img
+        src={profile.user.avatar}
+        alt={profile.user.name}
+      />
 
-        <h2>{profile.user.name}</h2>
-        <p>
-          {profile.company && <span>{profile.company}</span>}
-        </p>
-        {profile.location && <p>{profile.location}</p>}
-        {socialLinks}
-      </div>
+      <h2>{profile.user.name}</h2>
+      {profile.company && (
+        <h3>
+          Works at <span>{profile.company}</span>
+        </h3>
+      )}
+      {profile.location && (
+        <h3>
+          Lives in <span>{profile.location}</span>
+        </h3>
+      )}
+      {socialLinks}
     </div>
   )
 }
