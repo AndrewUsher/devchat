@@ -23,9 +23,7 @@ class ProfileGithub extends Component {
     )
       .then(res => res.json())
       .then(data => {
-        if (this.refs.myRef) {
-          this.setState({ repos: data })
-        }
+        this.setState({ repos: data })
       })
       .catch(error => console.log(error))
   }
@@ -35,30 +33,27 @@ class ProfileGithub extends Component {
 
     const repoItems = repos.map(repo => (
       <div key={repo.id} className="repo">
-        <div className="container">
-          <h4>
-            <Link to={repo.html_url} className="text-info" target="_blank">
-              {repo.name}
-            </Link>
-          </h4>
-          <p>{repo.description}</p>
-          <div>
-            <span>
-              Stars: {repo.stargazers_count}
-            </span>
-            <span>
-              Watchers: {repo.watchers_count}
-            </span>
-            <span>
-              Forks: {repo.forks_count}
-            </span>
-          </div>
+        <h4>
+          <Link to={repo.html_url} target="_blank">
+            {repo.name}
+          </Link>
+        </h4>
+        <p>{repo.description}</p>
+        <div>
+          <span>
+            Stars: {repo.stargazers_count}
+          </span>
+          <span>
+            Watchers: {repo.watchers_count}
+          </span>
+          <span>
+            Forks: {repo.forks_count}
+          </span>
         </div>
       </div>
     ))
     return (
-      <div ref="myRef">
-        <hr />
+      <div>
         <h3>Latest Github Repos</h3>
         {repoItems}
       </div>
