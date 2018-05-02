@@ -8,6 +8,7 @@ import Credentials from './Credentials'
 import Github from './Github'
 import Loader from '../utils/Loader'
 import { getProfileByHandle } from '../../actions/profile'
+import '../../styles/_profile.styl'
 
 class Profile extends Component {
   componentDidMount () {
@@ -31,7 +32,7 @@ class Profile extends Component {
     } else {
       content = (
         <div>
-          <Link to="/profiles">
+          <Link to="/profiles" className="back-button">
             Back To Profiles
           </Link>
           <Header profile={profile} />
@@ -49,7 +50,7 @@ class Profile extends Component {
 
     return (
       <div className="profile">
-        <div className="container">
+        <div className="single-profile">
           {content}
         </div>
       </div>
