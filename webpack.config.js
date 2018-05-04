@@ -72,7 +72,8 @@ module.exports = {
         uglifyOptions: {
           compress: false,
           ecma: 6,
-          mangle: true
+          mangle: true,
+          dead_code: true
         },
         sourceMap: true
       })

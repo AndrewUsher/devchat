@@ -5,6 +5,7 @@
   "main": "server.js",
   "repository": "https://github.com/AndrewUsher/devchat",
   "author": "Andrew Usher <andrewusher00@gmail.com>",
+  "sideEffects": false,
   "scripts": {
     "build": "NODE_ENV=\"production\" webpack --mode production",
     "client": "webpack-dev-server --open --mode development",
