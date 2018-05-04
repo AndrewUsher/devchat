@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Loadmang from '../components/utils/LoadMang'
 import { Provider } from 'react-redux'
 import store from '../store/index'
 import addAuthToken from '../utils/addAuthToken'
@@ -8,22 +9,21 @@ import { clearProfile } from '../actions/profile'
 import jwtDecode from 'jwt-decode'
 
 // import components
-
 import PrivateRoute from '../components/utils/PrivateRoute'
 import Header from '../components/Layout/Header'
-import Home from '../components/Onboarding/Home'
-import Dashboard from '../components/Dashboard/Dashboard'
-import Login from '../components/Onboarding/Login'
-import Register from '../components/Onboarding/Register'
 import Footer from '../components/Layout/Footer'
-import CreateProfile from '../components/Onboarding/CreateProfile'
-import EditProfile from '../components/Dashboard/EditProfile'
-import AddExperience from '../components/Dashboard/AddExperience'
-import AddEducation from '../components/Dashboard/AddEducation'
-import Profiles from '../components/Profile/Profiles'
-import Profile from '../components/Profile/Profile'
-import Posts from '../components/Post/Posts'
-import Post from '../components/Post/Post'
+import Home from '../components/Onboarding/Home'
+const Dashboard = Loadmang(() => import('../components/Dashboard/Dashboard'))
+const Register = Loadmang(() => import('../components/Onboarding/Register'))
+const Login = Loadmang(() => import('../components/Onboarding/Login'))
+const CreateProfile = Loadmang(() => import('../components/Onboarding/CreateProfile'))
+const EditProfile = Loadmang(() => import('../components/Dashboard/EditProfile'))
+const AddExperience = Loadmang(() => import('../components/Dashboard/AddExperience'))
+const AddEducation = Loadmang(() => import('../components/Dashboard/AddEducation'))
+const Profiles = Loadmang(() => import('../components/Profile/Profiles'))
+const Profile = Loadmang(() => import('../components/Profile/Profile'))
+const Posts = Loadmang(() => import('../components/Post/Posts'))
+const Post = Loadmang(() => import('../components/Post/Post'))
 
 if (localStorage.token) {
   const { token } = localStorage
@@ -40,9 +40,6 @@ if (localStorage.token) {
 }
 
 class App extends Component {
-  componentDidMount () {
-    console.log(this.props)
-  }
   render () {
     return (
       <Provider store={store}>
