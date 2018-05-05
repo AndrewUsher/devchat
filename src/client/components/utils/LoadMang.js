@@ -5,7 +5,8 @@ import Loader from './Loader'
 const Loadmang = func =>
   Loadable({
     loading: Loader,
-    loader: func
+    loader: func,
+    delay: 300
   })
 
 export default Loadmang
