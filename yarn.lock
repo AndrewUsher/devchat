@@ -7511,9 +7511,9 @@ react-loadable@^5.4.0:
   dependencies:
     prop-types "^15.5.0"
 
-react-moment@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/react-moment/-/react-moment-0.7.0.tgz#9ccb5c87be683d08c253b48469167443f09c3d89"
+react-moment@^0.8.4:
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/react-moment/-/react-moment-0.8.4.tgz#18eb59e1541c8b216353e23c21e9db50e42e2edb"
 
 react-redux@^5.0.7:
   version "5.0.7"
