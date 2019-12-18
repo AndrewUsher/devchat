@@ -64,7 +64,7 @@
     "image-webpack-loader": "^4.2.0",
     "nodemon": "^1.17.3",
     "prop-types": "^15.6.1",
-    "style-loader": "^0.21.0",
+    "style-loader": "^1.0.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "uglifyjs-webpack-plugin": "^1.2.5",
